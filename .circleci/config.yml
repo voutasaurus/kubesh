@@ -1,0 +1,15 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@1.5.0
+
+workflows:
+  build-push:
+    jobs:
+      - docker/publish:
+          image: voutasaurus/kubesh
+          tag: latest
+          filters: # only run on main
+            branches:
+              only:
+                - main
